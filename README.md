@@ -12,16 +12,16 @@ ARM をベースとした Raspberry Pi システムをサポートしている�
 
 カーネルは以下のリソースを使用する．  
 
-*RAM  
+* RAM  
 256MByte RAM にコードとデータを配置する．  
  
-*System Timer  
+* System Timer  
 高精度タイマに用いる．  
      
-*mini UART  
+* mini UART  
 コンソールの入出力に使用．  
 
-*割り込みコントローラ  
+* 割り込みコントローラ  
 割り込み優先度実装に使用．  
 割り込みレベルはソフトウェアで実装．
 
@@ -74,7 +74,7 @@ TXD・RXD・GNDのUART線をＰＣに接続する．
 Sample1のシステムログの出力
 ---------------------------
 
-*syssvc/banner.c  
+* syssvc/banner.c  
 [変更前]  
 
     void  
@@ -90,7 +90,7 @@ Sample1のシステムログの出力
         syslog_msk_log(LOG_UPTO(LOG_DEBUG), LOG_UPTO(LOG_DEBUG));  
         syslog_3(LOG_NOTICE, banner,  
 
-*sample/sample1.c  
+* sample/sample1.c  
 [変更前] main_task()内  
 
     HRTCNT	hrtcnt1, hrtcnt2;  
