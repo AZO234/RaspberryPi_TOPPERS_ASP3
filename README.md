@@ -74,34 +74,36 @@ TXD・RXD・GNDのUART線をＰＣに接続する．
 Sample1のシステムログの出力
 ---------------------------
 
-* syssvc/banner.c  
-[変更前]  
+* syssvc/banner.c
 
-    void  
-    print_banner_copyright(intptr_t exinf)  
-    {  
+[変更前]
+
+    void
+    print_banner_copyright(intptr_t exinf)
+    {
         syslog_3(LOG_NOTICE, banner,  
 
-[変更後]  
+[変更後]
 
-    void  
-    print_banner_copyright(intptr_t exinf)  
-    {  
+    void
+    print_banner_copyright(intptr_t exinf)
+    {
         syslog_msk_log(LOG_UPTO(LOG_DEBUG), LOG_UPTO(LOG_DEBUG));  
         syslog_3(LOG_NOTICE, banner,  
 
-* sample/sample1.c  
-[変更前] main_task()内  
+* sample/sample1.c
 
-    HRTCNT	hrtcnt1, hrtcnt2;  
+[変更前] main_task()内
 
-    //SVC_PERROR(syslog_msk_log(LOG_UPTO(LOG_INFO), LOG_UPTO(LOG_EMERG)));  
+    HRTCNT	hrtcnt1, hrtcnt2;
+
+    //SVC_PERROR(syslog_msk_log(LOG_UPTO(LOG_INFO), LOG_UPTO(LOG_EMERG)));
     syslog(LOG_NOTICE, "Sample program starts (exinf = %d).", (int_t) exinf);
 
-[変更後]  
+[変更後]
 
-    HRTCNT	hrtcnt1, hrtcnt2;  
+    HRTCNT	hrtcnt1, hrtcnt2;
 
-    SVC_PERROR(syslog_msk_log(LOG_UPTO(LOG_INFO), LOG_UPTO(LOG_EMERG)));  
+    SVC_PERROR(syslog_msk_log(LOG_UPTO(LOG_INFO), LOG_UPTO(LOG_EMERG)));
     syslog(LOG_NOTICE, "Sample program starts (exinf = %d).", (int_t) exinf);
 
