@@ -1,0 +1,11 @@
+# -*- coding: utf-8 -*-
+#
+#		パス3の生成スクリプトのターゲット依存部（Raspberry Pi用）
+#
+#  $Id: target_check.trb 745 2016-09-24 00:00:00Z azo $
+#
+
+#
+#  生成スクリプトのコア依存部（チップ依存部は飛ばす）
+#
+IncludeTrb("core_check.trb")

@@ -1,0 +1,9 @@
+E_PACKAGE asp3_rp1_gcc
+VERSION %date
+
+INCLUDE ../../MANIFEST
+INCLUDE ../../arch/arm_gcc/MANIFEST
+INCLUDE ../../arch/arm_gcc/bcm283x/MANIFEST
+INCLUDE ../../tecsgen/MANIFEST_for_asp3
+INCLUDE MANIFEST
+

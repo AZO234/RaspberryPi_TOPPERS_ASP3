@@ -1,0 +1,27 @@
+PACKAGE asp3_arch_arm_gcc_rp2
+
+E_PACKAGE
+MANIFEST
+Makefile.target
+rp2.ld
+target.cdl
+target_cfg1_out.h
+target_check.trb
+target_gpio.c
+target_gpio.h
+target_kernel.cfg
+target_kernel.h
+target_kernel.trb
+target_kernel_impl.c
+target_kernel_impl.h
+target_rename.def
+target_rename.h
+target_sil.h
+target_stddef.h
+target_syssvc.h
+target_test.h
+target_timer.cfg
+target_timer.h
+target_unrename.h
+target_user.txt
+

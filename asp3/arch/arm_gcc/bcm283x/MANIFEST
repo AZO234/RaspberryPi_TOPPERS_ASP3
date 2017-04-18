@@ -1,0 +1,24 @@
+PACKAGE asp3_arch_arm_gcc_bcm283x
+
+MANIFEST
+Makefile.chip
+bcm283x.h
+chip.cdl
+chip_config_asm.S
+chip_kernel.h
+chip_kernel_impl.c
+chip_kernel_impl.h
+chip_rename.def
+chip_rename.h
+chip_stddef.h
+chip_timer.c
+chip_timer.cfg
+chip_timer.h
+chip_unrename.h
+tPutLogBCM283X.c
+tPutLogBCM283X.cdl
+tSIOPortBCM283X.cdl
+tSIOPortBCM283XMain_inline.h
+tUART.c
+tUART.cdl
+uart0.h

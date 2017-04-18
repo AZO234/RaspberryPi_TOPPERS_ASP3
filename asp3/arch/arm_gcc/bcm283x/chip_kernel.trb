@@ -1,0 +1,67 @@
+# -*- coding: utf-8 -*-
+# 
+#		パス2の生成スクリプトのチップ依存部（BCM283X用）
+# 
+
+# 
+#  使用できる割込み番号とそれに対応する割込みハンドラ番号
+# 
+$INTNO_VALID = [ *(0..127) ]
+$INHNO_VALID = $INTNO_VALID
+
+#
+#  ターゲット定義の割込み要求ライン属性
+#
+#$TARGET_INTATR = $TA_NEGEDGE|$TA_POSEDGE|$TA_BOTHEDGE
+
+#
+#  CFG_INTで使用できる割込み番号と割込み優先度
+#
+#  割込み優先度は，-15〜0が使用できる．0はNMIと扱う．
+#
+$INTPRI_CFGINT_VALID = [ *(-15..0) ]
+
+# 
+#  生成スクリプトのコア依存部
+# 
+IncludeTrb("core_kernel.trb")
+
+# 
+#  割込みマスクテーブル
+# 
+$kernelCfgC.comment_header("Interrupt Handler Mask Table (for Raspberry Pi)")
+
+$kernelCfgC.add("const uint32_t _kernel_ipm_mask_tbl[TNUM_INTPRI][4] = {")
+$INTPRI_CFGINT_VALID.reverse_each do |inhLevel, index|
+  intmaskb = 0
+  intmask1 = 0
+  intmask2 = 0
+  intmaskc0 = 0
+  $cfgData[:CFG_INT].each_with_index do |(key, params), index|
+      if params[:intno] >= 0 && params[:intno] < 32 then
+        if params[:intpri] >= inhLevel then
+          intmaskb = intmaskb | (1 << params[:intno])
+        end
+      else
+        if params[:intno] >= 32 && params[:intno] < 64 then
+          if params[:intpri] >= inhLevel then
+            intmask1 = intmask1 | (1 << (params[:intno] - 32))
+          end
+        else
+          if params[:intno] >= 64 && params[:intno] < 96 then
+            if params[:intpri] >= inhLevel then
+              intmask2 = intmask2 | (1 << (params[:intno] - 64))
+            end
+          else
+            if params[:intpri] >= inhLevel then
+              intmaskc0 = intmaskc0 | (1 << (params[:intno] - 96))
+            end
+          end
+        end
+      end
+  end
+  $kernelCfgC.append("\t/* #{inhLevel} */ {0x#{sprintf("%08x", intmaskb)}, 0x#{sprintf("%08x", intmask1)}, 0x#{sprintf("%08x", intmask2)}, 0x#{sprintf("%08x", intmaskc0)}},")
+  $kernelCfgC.add
+end
+$kernelCfgC.add2("};")
+

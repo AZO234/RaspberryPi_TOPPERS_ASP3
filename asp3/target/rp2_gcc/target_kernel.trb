@@ -1,0 +1,11 @@
+# -*- coding: utf-8 -*-
+#
+#		パス2の生成スクリプトのターゲット依存部（Raspberry Pi用）
+#
+#  $Id: target_kernel.trb 745 2016-09-24 00:00:00Z azo $
+#
+
+#
+#  生成スクリプトのチップ依存部
+#
+IncludeTrb("chip_kernel.trb")

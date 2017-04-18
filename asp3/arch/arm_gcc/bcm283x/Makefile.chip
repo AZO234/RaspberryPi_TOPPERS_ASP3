@@ -1,0 +1,27 @@
+#
+#		Makefile のチップ依存部（BCM283X用）
+#
+#  $Id: Makefile.chip 720 2016-09-24 00:00:00Z azo $
+# 
+
+#
+#  チップ依存部ディレクトリ名の定義
+#
+CHIPDIR = $(SRCDIR)/arch/$(CORE)_$(TOOL)/$(CHIP)
+
+#
+#  コンパイルオプション
+#
+INCLUDES := $(INCLUDES) -I$(CHIPDIR)
+
+#
+#  カーネルに関する定義
+#
+KERNEL_DIRS := $(KERNEL_DIRS) $(CHIPDIR)
+KERNEL_ASMOBJS := $(KERNEL_ASMOBJS) chip_config_asm.o
+KERNEL_COBJS := $(KERNEL_COBJS) chip_kernel_impl.o chip_timer.o
+
+#
+#  コア依存部
+#
+include $(SRCDIR)/arch/$(CORE)_$(TOOL)/common/Makefile.core
