@@ -5,7 +5,7 @@ Raspberry Pi ターゲット依存部 for TOPPERS/ASP3
 ----
 
 Raspberry Pi ターゲット依存部は，  
-ARM をベースとした Raspberry Pi システムをサポートしている．  
+ARM をベースとした Raspberry Pi Zero/1/2/3 システムをサポートしている．  
 
 カーネルの使用リソース
 ----------------------
@@ -55,7 +55,7 @@ https://www.toppers.jp/asp3-e-download.html
 本ソース差分を上書きする。
 
 user.txtに従ってビルド環境を作成する．  
-<ターゲット略称> は，rp1_gccとなる．
+<ターゲット略称> は，rp1_gcc または rp2_gcc または rp3_gcc となる．
 
 FAT32でフォーマットしたSDカードに，  
 bootcode.bin, start.elf (Raspbianのfirmwareより取得) と，  
